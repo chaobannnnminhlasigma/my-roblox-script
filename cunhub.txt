@@ -1,1 +1,50 @@
-https://raw.githubusercontent.com/chaobannnnminhlasigma/my-roblox-script/refs/heads/main/cunhub.txt
+-- 🌸 Cun Hub | Phiên bản GitHub rút gọn (đã chỉnh sửa)
+repeat task.wait() until game:IsLoaded()
+
+-- 🔘 Nút mở menu
+local btn = Instance.new("ImageButton")
+btn.Parent = game:GetService("CoreGui")
+btn.Size = UDim2.new(0,40,0,40)
+btn.Position = UDim2.new(0.1,0,0.15,0)
+btn.BackgroundColor3 = Color3.fromRGB(0,0,0)
+btn.Draggable = true
+btn.Image = "" -- thay ID ảnh nếu muốn (ví dụ "rbxassetid://123456789")
+local corner = Instance.new("UICorner", btn)
+corner.CornerRadius = UDim.new(1,10)
+btn.MouseButton1Click:Connect(function()
+    pcall(function()
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
+    end)
+end)
+
+-- 💠 Tải Fluent UI (nếu có) — nếu không tải được, script vẫn tiếp tục
+local Fluent
+do
+    local ok, res = pcall(function()
+        return loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua", true))()
+    end)
+    if ok and res then
+        Fluent = res
+    else
+        warn("Không tải được Fluent UI; GUI sẽ không hiển thị nhưng script vẫn chạy.")
+        Fluent = nil
+    end
+end
+
+-- Nếu Fluent có thì tạo cửa sổ, không thì tạo chức năng tối thiểu
+local Window
+if Fluent then
+    Window = Fluent:CreateWindow({
+        Title = "🌸 Cun Hub 🌸",
+        SubTitle = "Tổng hợp script Roblox",
+        Size = UDim2.fromOffset(450, 300),
+        Acrylic = true,
+        Theme = "Dark",
+        MinimizeKey = Enum.KeyCode.End
+    })
+end
+
+-- Hàm tiện: nếu không có Fluent, tạo chỗ chứa fake để tránh nil errors
+local Tabs = {}
+if Wi
+::contentReference[oaicite:0]{index=0}
