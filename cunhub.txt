@@ -1,3 +1,4 @@
+
 -- 🌸 Cun Hub | Phiên bản GitHub rút gọn
 repeat task.wait() until game:IsLoaded()
 
@@ -6,23 +7,14 @@ local btn = Instance.new("ImageButton", game.CoreGui)
 btn.Size, btn.Position = UDim2.new(0,40,0,40), UDim2.new(0.1,0,0.15,0)
 btn.BackgroundColor3 = Color3.fromRGB(0,0,0)
 btn.Draggable = true
-btn.Image = "" -- thay ID ảnh nếu muốn
+btn.Image = "" -- 🖼️ thay bằng ID ảnh Roblox (nếu muốn)
 Instance.new("UICorner", btn).CornerRadius = UDim.new(1,10)
 btn.MouseButton1Click:Connect(function()
-    pcall(function()
-        game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
-    end)
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game)
 end)
 
 -- 💠 Giao diện chính (Fluent UI)
-local ok, Fluent = pcall(function()
-    return loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua", true))()
-end)
-if not ok or not Fluent then
-    warn("Không tải được Fluent UI; script vẫn tiếp tục mà không có GUI.")
-    return
-end
-
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local Window = Fluent:CreateWindow({
     Title = "🌸 Cun Hub 🌸",
     SubTitle = "Tổng hợp script Roblox",
@@ -32,13 +24,13 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 
--- Tabs
+-- 🧭 Tabs
 local Tabs = {
     Scripts = Window:AddTab({Title = "Scripts"}),
     Social = Window:AddTab({Title = "TikTok"})
 }
 
--- Danh sách script mẫu
+-- ⚙️ Danh sách script
 local scripts = {
     {title="LEMON", link="https://pastefy.app/MJw2J4T6/raw"},
     {title="CHILI HUB", link="https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"},
@@ -50,18 +42,21 @@ for _,v in ipairs(scripts) do
         Title = v.title,
         Description = "Chạy "..v.title,
         Callback = function()
-            pcall(function()
-                loadstring(game:HttpGet(v.link, true))()
-            end)
+            loadstring(game:HttpGet(v.link))()
         end
     })
 end
 
+-- 💬 Liên hệ / TikTok
 Tabs.Social:AddButton({
     Title = "Follow TikTok 🌸",
     Description = "b.yt03",
     Callback = function()
-        pcall(function() setclipboard("https://www.tiktok.com/@b.yt03") end)
-        Fluent:Notify({Title="Đã sao chép!", Content="Dán link vào trình duyệt để mở TikTok.", Duration=3})
+        setclipboard("https://www.tiktok.com/@b.yt03")
+        Fluent:Notify({
+            Title = "Đã sao chép!",
+            Content = "Dán link vào trình duyệt để mở TikTok nhé!",
+            Duration = 3
+        })
     end
 })
